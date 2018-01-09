@@ -13,11 +13,17 @@ staticdiff(b, thresh)
 or more depending upon the accuracy required.}
 }
 \value{
-A 3-D matrix of frames containing foreground obtained after background subtraction
- is applied(binary images).
+A 3-D matrix of frames containing foreground obtained after background subtraction is
+applied(binary images).
 }
 \description{
 This function implements a static background subtraction method in which background model is
 set to first frame. This static background model is then subtracted from all subsequent frames
 to obtain the forground images.
+}
+\examples{
+ \donttest{
+videoURL <- system.file("extdata","daria_skip.avi",package = "Rbgs")
+frames <- readvideoframe(videoURL,1,9)
+bground<-staticdiff(frames,35) }
 }

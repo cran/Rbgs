@@ -7,9 +7,15 @@
 #' @param b 3-D matrix containing grayscaled video frames.
 #' @param thresh threshold required to obtain foreground images. Its value can lie between 30-40
 #' or more depending upon the accuracy required.
-#' @return A 3-D matrix of frames containing foreground obtained after background subtraction
-#'  is applied(binary images).
+#' @return A 3-D matrix of frames containing foreground obtained after background subtraction is
+#' applied(binary images).
+#' @examples
+#'  \donttest{
+#' videoURL <- system.file("extdata","daria_skip.avi",package = "Rbgs")
+#' frames <- readvideoframe(videoURL,1,9)
+#' bground<-staticdiff(frames,35) }
 #' @export
+#'
 staticdiff<- function(b,thresh)
 {
   flag=0;

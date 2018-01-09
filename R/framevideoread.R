@@ -13,11 +13,26 @@
 #' @examples
 #' ##Save the URL of the video file into R session and then load the required videoframes
 #' videoURL <- system.file("extdata","jog.mp4",package = "Rbgs")
-#' frames <- readvideoframe(videoURL,90,110)
+#' frames <- readvideoframe(videoURL,213,233)
 #' @export
 readvideoframe <- function(videoURL,start,end)
 {
+  jarpath <- get_path()
+  flag_xug <- (base::file.exists(jarpath)) & (base::file.size(jarpath) ==40318152)
+  if((flag_xug == FALSE) & (!(interactive())))
+     {
+      warning("Xuggle 5.4 is not installed. You can install by calling inst_xug()")
+     return(NULL)
+      }
 
+  if (flag_xug == FALSE)
+  {
+    inst_xug()
+  }
+  else
+  {
+    rJava::.jpackage(name='Rbgs',jars="*",morePaths=jarpath)
+  }
   rJava::.jinit()
   ob1=rJava::.jnew("Videoread")
   ob2=rJava::.jcall(ob1,"[[[I","framesetread",videoURL,base::as.integer(start),base::as.integer(end))
@@ -31,4 +46,5 @@ readvideoframe <- function(videoURL,start,end)
   }
 
   return(frames)
-}
+    }
+

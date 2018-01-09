@@ -14,7 +14,21 @@
 #' @export
 readvideo <- function(videoURL)
 {
-
+  jpaths <- get_path()
+  flag_xug <- (base::file.exists(jpaths)) & (base::file.size(jpaths) ==40318152)
+  if((flag_xug == FALSE) & (!(interactive())))
+  {
+    warning("Xuggle 5.4 is not installed. You can install by calling inst_xug()")
+    return(NULL)
+  }
+  if (flag_xug == FALSE)
+  {
+    inst_xug()
+  }
+  else
+  {
+    rJava::.jpackage(name='Rbgs',jars="*",morePaths=jpaths)
+  }
 rJava::.jinit()
 
 ob1=rJava::.jnew("Videoread")

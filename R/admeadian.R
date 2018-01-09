@@ -10,6 +10,11 @@
 #' upon the accuracy of the result.
 #' @return A 3-D matrix of frames containing foreground obtained after background subtraction
 #'  is applied(binary images).
+#' @examples
+#'  \donttest{
+#' videoURL <- system.file("extdata","daria_skip.avi",package = "Rbgs")
+#' frames <- readvideoframe(videoURL,1,15)
+#' bground<-admedian(frames,3,25) }
 #'
 #' @export
 admedian<- function(b,nf,thresh)

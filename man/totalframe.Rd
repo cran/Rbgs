@@ -16,3 +16,8 @@ count total no of frames in a video.
 This function takes as input URL of the video. This function returns total number of frames contained in
 the video file.
 }
+\examples{
+##Save the URL of the video file into R session and then load videoframes
+videoURL <- system.file("extdata","daria_skip.avi",package = "Rbgs")
+no_of_frames <- totalframe(videoURL)
+}

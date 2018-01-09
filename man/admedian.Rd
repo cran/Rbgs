@@ -23,3 +23,10 @@ This function performs background subtraction on input grayscale frames using ad
 background subtraction algorithm.The algorithm depends upon the number of previous frames taken
 into consideration.
 }
+\examples{
+ \donttest{
+videoURL <- system.file("extdata","daria_skip.avi",package = "Rbgs")
+frames <- readvideoframe(videoURL,1,15)
+bground<-admedian(frames,3,25) }
+
+}
